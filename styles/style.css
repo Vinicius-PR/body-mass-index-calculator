@@ -16,6 +16,11 @@
   box-sizing: border-box;
 }
 
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 main {
   margin: 0 auto;
 }
@@ -226,6 +231,9 @@ header {
   border-radius: 12px;
   border: 1px solid #D8E2E7;
 }
+.bmi-calculator form .bmi-details-metric div div:has(input:focus) {
+  border: 1px solid #345FF6;
+}
 .bmi-calculator form .bmi-details-imperial {
   display: flex;
   flex-direction: column;
@@ -244,13 +252,25 @@ header {
 .bmi-calculator form .bmi-details-imperial .imperial-outer-cell .imperial-inputs-container .imperial-single-input {
   display: flex;
   padding: 1.25rem 1.5rem;
+  gap: 1rem;
   border-radius: 12px;
   border: 1px solid #D8E2E7;
+}
+.bmi-calculator form .bmi-details-imperial .imperial-outer-cell .imperial-inputs-container div:has(input:focus) {
+  border: 1px solid #345FF6;
 }
 .bmi-calculator form .bmi-details-metric input,
 .bmi-calculator form .bmi-details-imperial input {
   border: none;
   width: 100%;
+  outline: none;
+}
+.bmi-calculator form .bmi-details-metric input::-moz-placeholder, .bmi-calculator form .bmi-details-imperial input::-moz-placeholder {
+  opacity: 0.25;
+}
+.bmi-calculator form .bmi-details-metric input::placeholder,
+.bmi-calculator form .bmi-details-imperial input::placeholder {
+  opacity: 0.25;
 }
 .bmi-calculator form .bmi-details-metric span,
 .bmi-calculator form .bmi-details-imperial span {
@@ -439,6 +459,134 @@ header {
   .bmi-tips .tips-card {
     gap: 2rem;
     flex-direction: column;
+  }
+}
+
+footer {
+  padding: 1rem;
+  max-width: 1160px;
+  margin: 0 auto 7.5rem;
+  display: grid;
+  row-gap: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 32px 1fr 1fr 32px 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+footer .footer-text {
+  max-width: 564px;
+  grid-area: 1/1/2/7;
+  margin-right: 8.25rem;
+}
+footer .footer-text h2 {
+  margin-bottom: 2.18rem;
+}
+footer .card-1 {
+  grid-area: 1/7/2/11;
+}
+footer .image-line {
+  grid-area: 2/2/3/4;
+  margin-top: 1.18rem;
+}
+footer .card-2 {
+  grid-area: 2/4/3/8;
+}
+footer .card-3 {
+  grid-area: 2/9/3/12;
+}
+footer .card-4 {
+  grid-area: 3/3/4/5;
+}
+footer .card-5 {
+  grid-area: 3/6/4/10;
+}
+@media (max-width: 768px) {
+  footer {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 15rem 1fr 1fr 1fr;
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+  }
+  footer .footer-text {
+    grid-area: 1/1/2/3;
+    text-align: center;
+    max-width: unset;
+    height: 1rem;
+    margin-right: 0;
+  }
+  footer .image-line {
+    display: none;
+  }
+  footer .card-1 {
+    grid-area: 2/1/3/2;
+  }
+  footer .card-2 {
+    grid-area: 2/2/3/3;
+  }
+  footer .card-3 {
+    grid-area: 3/1/4/2;
+  }
+  footer .card-4 {
+    grid-area: 3/2/4/3;
+  }
+  footer .card-5 {
+    grid-area: 4/1/5/3;
+    justify-self: center;
+    width: 22.8rem;
+    height: 14.5rem;
+  }
+}
+@media (max-width: 425px) {
+  footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    row-gap: 1rem;
+  }
+  footer .footer-text {
+    grid-area: unset;
+    text-align: center;
+    max-width: unset;
+    height: auto;
+    margin-right: 0;
+  }
+  footer .card-1 {
+    grid-area: unset;
+  }
+  footer .card-2 {
+    grid-area: unset;
+  }
+  footer .card-3 {
+    grid-area: unset;
+  }
+  footer .card-4 {
+    grid-area: unset;
+  }
+  footer .card-5 {
+    grid-area: unset;
+    justify-self: unset;
+    width: unset;
+    height: unset;
+  }
+}
+
+.footer-card {
+  width: 22.8rem;
+  height: 14.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+  box-shadow: 16px 32px 56px 0px rgba(143, 174, 207, 0.25);
+}
+.footer-card div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .footer-card {
+    width: auto;
+    height: auto;
   }
 }
 
