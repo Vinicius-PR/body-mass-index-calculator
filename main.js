@@ -40,8 +40,8 @@ function reset() {
 }
 
 function printSuggestionMetric(height) {
-  const lowerWeight = ((healthyLowerLimit / 10000) * (height**2)).toFixed(1)
-  const upperWeight = ((healthyUpperLimit / 10000) * (height**2)).toFixed(1)
+  const lowerWeight = ((healthyLowerLimit / 10000) * (height ** 2)).toFixed(1)
+  const upperWeight = ((healthyUpperLimit / 10000) * (height ** 2)).toFixed(1)
 
   if (bmiResult <= underweightLimit) {
     bmiSuggestion.innerHTML = `
@@ -67,12 +67,12 @@ function printSuggestionMetric(height) {
 }
 
 function printSuggestionImperial(height) {
-  const lowerWeight = ((healthyLowerLimit / 703) * (height**2)).toFixed(1)
-  const upperWeight = ((healthyUpperLimit / 703) * (height**2)).toFixed(1)
-  const lowerWeightSt = Math.floor(lowerWeight/14)
-  const lowerWeightLbs = Math.floor(lowerWeight%14)
-  const upperWeightSt = Math.floor(upperWeight/14)
-  const upperWeightLbs = Math.floor(upperWeight%14)
+  const lowerWeight = ((healthyLowerLimit / 703) * (height ** 2)).toFixed(1)
+  const upperWeight = ((healthyUpperLimit / 703) * (height ** 2)).toFixed(1)
+  const lowerWeightSt = Math.floor(lowerWeight / 14)
+  const lowerWeightLbs = Math.floor(lowerWeight % 14)
+  const upperWeightSt = Math.floor(upperWeight / 14)
+  const upperWeightLbs = Math.floor(upperWeight % 14)
 
   if (bmiResult <= underweightLimit) {
     bmiSuggestion.innerHTML = `
@@ -137,11 +137,19 @@ radioInputs.forEach((input) => {
   })
 })
 
-// Metric events Listeners
+// *********** Metric events Listeners ***********
 heightCmMetricInput.addEventListener('change', calculateBmiMetric)
 weightKgMetricInput.addEventListener('change', calculateBmiMetric)
 
-// Imperial events Listeners
+// To hide the keyboard on cellphones
+weightKgMetricInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    weightKgMetricInput.blur()
+  }
+})
+
+
+// *********** Imperial events Listeners ***********
 heightFtImperialInput.addEventListener('change', (e) => {
   calculateBmiImperial()
 })
@@ -156,4 +164,11 @@ weightStImperialInput.addEventListener('change', (e) => {
 
 weightLbsImperialInput.addEventListener('change', (e) => {
   calculateBmiImperial()
+})
+
+// To hide the keyboard on cellphones
+weightLbsImperialInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    weightLbsImperialInput.blur()
+  }
 })
